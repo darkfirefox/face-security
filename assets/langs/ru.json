@@ -1,0 +1,10 @@
+{
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "login": "Логин",
+    "emptyUsername": "Пустое поле",
+    "emptyPassword": "Пустое поле",
+    "signIn": "Вход",
+    "signUp": "Регистрация",
+    "history": "История"
+}

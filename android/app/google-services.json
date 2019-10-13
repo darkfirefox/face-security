@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "567183872849",
+    "firebase_url": "https://face-security-c74c7.firebaseio.com",
+    "project_id": "face-security-c74c7",
+    "storage_bucket": "face-security-c74c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567183872849:android:48bef627dadc5e93443970",
+        "android_client_info": {
+          "package_name": "com.example.face_security"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567183872849-07hj1ijfe17ie9jca32vrm72k0pap7h2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCerPB2s7hw_qnePNG1t3duLQ_fifSeFrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567183872849-07hj1ijfe17ie9jca32vrm72k0pap7h2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

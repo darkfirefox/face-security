@@ -1,0 +1,3 @@
+class FSImageNames {
+  FSImageNames._();
+}

@@ -1,0 +1,3 @@
+class FSDoubles {
+  FSDoubles._();
+}

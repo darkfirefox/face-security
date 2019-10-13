@@ -1,0 +1,3 @@
+class FSRouteNames {
+  FSRouteNames._();
+}
