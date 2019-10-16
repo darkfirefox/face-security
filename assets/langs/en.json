@@ -6,5 +6,10 @@
     "emptyPassword": "Empty field",
     "signIn": "Sign In",
     "signUp": "Sign Up",
-    "history": "History"
+    "history": "History",
+    "menu": "Menu",
+    "profile": "Profile",
+    "logout": "Logout",
+    "about": "About",
+    "developers": "Developers:"
 }

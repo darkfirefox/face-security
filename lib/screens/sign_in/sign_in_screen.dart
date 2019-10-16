@@ -1,8 +1,10 @@
 import 'package:face_security/commons/widgets/loading_widget.dart';
 import 'package:face_security/screens/sign_in/bloc/bloc.dart';
+import 'package:face_security/utils/image_names.dart';
 import 'package:face_security/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -33,6 +35,12 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
+          Container(
+            child: SvgPicture.asset(
+              FSImageNames.background,
+              fit: BoxFit.cover,
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
@@ -75,15 +83,18 @@ class _SignInScreenState extends State<SignInScreen> {
                             ],
                           ),
                         ),
-                        RaisedButton(
-                          onPressed: () {
-                            if (_formKey.currentState.validate()) {
-                              bloc.dispatch(LoginTappedEvent(
-                                  password: _password.text,
-                                  username: _username.text));
-                            }
-                          },
-                          child: Text(FSStrings.login(context)),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16),
+                          child: RaisedButton(
+                            onPressed: () {
+                              if (_formKey.currentState.validate()) {
+                                bloc.dispatch(LoginTappedEvent(
+                                    password: _password.text,
+                                    username: _username.text));
+                              }
+                            },
+                            child: Text(FSStrings.login(context)),
+                          ),
                         ),
                       ],
                     ),

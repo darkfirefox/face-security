@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class FSColors {
   FSColors._();
 
-  static const Color primaryColor = Colors.green;
+  static const Color primaryColor = Colors.orange;
   static const Color modalBarrier = Colors.black;
   static const Color divider = Colors.grey;
   static const Color appBar = Colors.black;

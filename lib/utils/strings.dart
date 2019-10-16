@@ -15,4 +15,9 @@ class FSStrings {
   static String signIn(BuildContext context) => translate(context, 'signIn');
   static String signUp(BuildContext context) => translate(context, 'signUp');
   static String history(BuildContext context) => translate(context, 'history');
+  static String menu(BuildContext context) => translate(context, 'menu');
+  static String profile(BuildContext context) => translate(context, 'profile');
+  static String logout(BuildContext context) => translate(context, 'logout');
+  static String about(BuildContext context) => translate(context, 'about');
+  static String developers(BuildContext context) => translate(context, 'developers');
 }
