@@ -23,4 +23,10 @@ class FSTextStyles {
     fontSize: 14,
     color: FSColors.alertDateTime,
   );
+  static const TextStyle menuTitle = TextStyle();
+  static const TextStyle menuProfile = TextStyle();
+  static const TextStyle menuAbout = TextStyle();
+  static const TextStyle menuLogout = TextStyle();
+  static const TextStyle aboutTitle = TextStyle();
+  static const TextStyle aboutRow = TextStyle();
 }

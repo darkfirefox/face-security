@@ -6,5 +6,10 @@
     "emptyPassword": "Пустое поле",
     "signIn": "Вход",
     "signUp": "Регистрация",
-    "history": "История"
+    "history": "История",
+    "menu": "Меню",
+    "profile": "Профиль",
+    "logout": "Выход",
+    "about": "О приложении",
+    "developers": "Разработчики:"
 }
