@@ -1,6 +1,6 @@
 import { FaceMatcher } from 'face-api.js';
 import * as faceapi from 'face-api.js';
-import { canvas, faceDetectionOptions, saveFile } from './commons';
+import { canvas, faceDetectionOptions, saveFile } from '../commons';
 const config = require('../config.json');
 
 export async function processRecognition(faceMatcher: FaceMatcher) {

@@ -1,11 +1,22 @@
-// var admin = require("firebase-admin");
+import express = require('express');
 
-// var serviceAccount = require("path/to/serviceAccountKey.json");
+// Create a new express application instance
+const app: express.Application = express();
 
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   databaseURL: "https://face-security-c74c7.firebaseio.com"
-// });
+app.post('/login', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.put('/pushToken', () => {});
+
+app.post('/signUp', () => {});
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+});
+
+
+
 
 // pushToken() {
 

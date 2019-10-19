@@ -2,3 +2,4 @@
 *.jpg
 /trash
 package-lock.json
+security_keys.json

@@ -1,5 +1,5 @@
-import { train } from './train';
-import { processRecognition } from './recognition';
+import { train } from './recognition/train';
+import { processRecognition } from './recognition/recognition';
 const interval = require('interval-promise');
 
 async function run() {
