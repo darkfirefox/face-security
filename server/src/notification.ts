@@ -13,7 +13,7 @@ export async function subscribeToNotifications(registrationTokens: string | stri
     console.log(response);
 }
 
-export async function sendNotification(message: any) {
+export async function sendNotification(message: admin.messaging.Message | any) {
     if (!message.topic) {
         message.topic = topic;
     }

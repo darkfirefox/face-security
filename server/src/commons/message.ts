@@ -1,1 +1,1 @@
-export const topic = 'unknown user';
+export const topic = 'unknown_user';
