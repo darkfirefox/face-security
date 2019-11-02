@@ -1,7 +1,8 @@
 import { FaceMatcher } from 'face-api.js';
 import * as faceapi from 'face-api.js';
 import { canvas, faceDetectionOptions, saveFile } from '../commons';
-const config = require('../config.json');
+import { sendNotification } from '../notification';
+const config = require('../../config.json');
 
 export async function processRecognition(faceMatcher: FaceMatcher) {
   console.log("start");
@@ -14,13 +15,23 @@ export async function processRecognition(faceMatcher: FaceMatcher) {
   
     const queryDrawBoxes = resultsQuery.map(res => {
       const bestMatch = faceMatcher.findBestMatch(res.descriptor);
-      if (bestMatch.label === "unknown") console.error("UNKNOWN PERSON"); 
+      if (bestMatch.label === "unknown") 
+        sendNotification({
+          notification: {
+            title: 'Unknown person',
+            body: 'Need your help!!'
+          } /*,
+          apns: {
+            title: 'Unknown person',
+            body: 'Need your help!!'
+          } */
+        });
       return new faceapi.draw.DrawBox(res.detection.box, { label: bestMatch.toString() });
     })
-    console.log("end");
     console.log(new Date());
+    console.log("end");
     const outQuery = faceapi.createCanvasFromMedia(queryImage as any);
     queryDrawBoxes.forEach(drawBox => drawBox.draw(outQuery));
     saveFile('queryImage.jpg', (outQuery as any).toBuffer('image/jpeg'));
-    console.log('done, saved results to out/queryImage.jpg');
+    // console.log('done, saved results to out/queryImage.jpg');
 }
