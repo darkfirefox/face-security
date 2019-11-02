@@ -1,6 +1,6 @@
 import * as faceapi from 'face-api.js';
 
-import { canvas, faceDetectionNet } from './commons';
+import { canvas, faceDetectionNet } from '../commons';
 
 const REFERENCE_IMAGES = ['./Maksim.jpg', './Milana.jpg'];
 const labels = ['Maksim', 'Milana'];
