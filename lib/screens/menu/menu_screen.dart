@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class MenuWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final MenuBloc bloc = BlocProvider.of(context);
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -42,7 +41,8 @@ class MenuWidget extends StatelessWidget {
               FSStrings.logout(context),
               style: FSTextStyles.menuLogout,
             ),
-            onTap: () => bloc.dispatch(LogoutTappedEvent()),
+            onTap: () =>
+                BlocProvider.of<MenuBloc>(context).add(LogoutTappedEvent()),
           ),
         ],
       ),

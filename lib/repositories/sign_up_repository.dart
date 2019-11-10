@@ -14,6 +14,6 @@ class SignUpRepository {
       'password': password,
       "file": await MultipartFile.fromFile(image.path, filename: 'uploadfile'),
     });
-    return client.singup(formData);
+    return client.signup(formData);
   }
 }

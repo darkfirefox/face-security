@@ -13,7 +13,7 @@ class FSApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<RootBloc>(
       builder: (_) => RootBloc(sessionRepository: services<SessionRepository>())
-        ..dispatch(AppStartedEvent()),
+        ..add(AppStartedEvent()),
       child: MaterialApp(
         title: FSConfig.appTitle,
         theme: FSConfig.appTheme,

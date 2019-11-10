@@ -29,7 +29,6 @@ class SignUpBuilder {
           ),
         ],
         child: BlocListener<RouterBloc, RouterState>(
-          bloc: routerBloc,
           listener: (BuildContext context, RouterState state) {
             if (state is Close) {
               Navigator.pop(context);

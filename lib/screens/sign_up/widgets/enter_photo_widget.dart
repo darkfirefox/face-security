@@ -32,23 +32,36 @@ class EnterPhotoWidget extends StatelessWidget {
   List<Widget> _buildChildren() {
     final List<Widget> children = <Widget>[];
     if (file == null) {
-      children.add(GestureDetector(
-        onTap: onTap,
-        child: Icon(
-          Icons.add_to_photos,
-          size: 40,
+      children.add(
+        GestureDetector(
+          onTap: onTap,
+          child: Icon(
+            Icons.add_to_photos,
+            size: 40,
+          ),
         ),
-      ));
+      );
     } else {
-      children.add(GestureDetector(
-        onTap: onTap,
-        child: Image.file(file, height: 40, width: 40,),
-      ));
+      children.add(
+        GestureDetector(
+          onTap: onTap,
+          child: Image.file(
+            file,
+            height: 200,
+            width: 200,
+          ),
+        ),
+      );
     }
-    children.add(ButtonWidget(
-      title: title,
-      onTap: file == null ? null : onSuccess,
-    ));
+    children.add(
+      Padding(
+        padding: const EdgeInsets.only(top: 16),
+        child: ButtonWidget(
+          title: title,
+          onTap: file == null ? null : onSuccess,
+        ),
+      ),
+    );
     return children;
   }
 }

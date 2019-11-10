@@ -34,7 +34,7 @@ class MainBuilder {
         BlocProvider<LoggedInBloc>(
           builder: (_) =>
               LoggedInBloc(pushRepository: services<PushRepository>())
-                ..dispatch(BlocLoggedInLoaded()),
+                ..add(BlocLoggedInLoaded()),
         ),
         BlocProvider<MenuBloc>(
           builder: (_) =>

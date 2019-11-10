@@ -33,7 +33,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SignInBloc bloc = BlocProvider.of(context);
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -90,7 +89,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           child: RaisedButton(
                             onPressed: () {
                               if (_formKey.currentState.validate()) {
-                                bloc.dispatch(LoginTappedEvent(
+                                BlocProvider.of<SignInBloc>(context).add(LoginTappedEvent(
                                     password: _password.text,
                                     username: _username.text));
                               }

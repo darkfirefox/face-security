@@ -9,8 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_bloc: ^0.21.0
-  bloc: ^0.15.0
+  flutter_bloc: ^2.0.0
+  bloc: ^2.0.0
   firebase_messaging: ^5.1.6
   meta: ^1.1.7
   equatable: ^0.6.1

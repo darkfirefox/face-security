@@ -1,6 +1,5 @@
 
 import 'package:dio/dio.dart';
-import 'package:face_security/models/session.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'sign_in_client.g.dart';

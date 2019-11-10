@@ -44,7 +44,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final SignUpBloc bloc = BlocProvider.of(context);
     return Stack(
       children: <Widget>[
         Container(
@@ -71,7 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 title: FSStrings.next(context),
                 controller: _usernameController,
                 onSuccess: () {
-                  bloc.dispatch(
+                  BlocProvider.of<SignUpBloc>(context).add(
                       ChangedUsernameEvent(username: _usernameController.text));
                   _controller.animateToPage(1,
                       duration: _duration, curve: _curve);
@@ -82,7 +81,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 title: FSStrings.next(context),
                 controller: _passwordController,
                 onSuccess: () {
-                  bloc.dispatch(
+                  BlocProvider.of<SignUpBloc>(context).add(
                       ChangePasswordEvent(password: _passwordController.text));
                   _controller.animateToPage(2,
                       duration: _duration, curve: _curve);
@@ -92,14 +91,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onTap: () async {
                   var image =
                       await ImagePicker.pickImage(source: ImageSource.camera);
-                  bloc.dispatch(ChangePhotoEvent(image: image));
+                  BlocProvider.of<SignUpBloc>(context)
+                      .add(ChangePhotoEvent(image: image));
                   setState(() {
                     _file = image;
                   });
                 },
                 title: FSStrings.signUp(context),
                 onSuccess: () {
-                  bloc.dispatch(SingUpTapped());
+                  BlocProvider.of<SignUpBloc>(context).add(SingUpTapped());
                 },
                 file: _file,
               ),
