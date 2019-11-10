@@ -1,7 +1,9 @@
 import 'package:face_security/commons/widgets/loading_widget.dart';
 import 'package:face_security/screens/sign_in/bloc/bloc.dart';
+import 'package:face_security/screens/sign_up/sign_up_builder.dart';
 import 'package:face_security/utils/image_names.dart';
 import 'package:face_security/utils/utils.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -94,6 +96,26 @@ class _SignInScreenState extends State<SignInScreen> {
                               }
                             },
                             child: Text(FSStrings.login(context)),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16),
+                          child: RichText(
+                            text: TextSpan(
+                              children: <TextSpan>[
+                                TextSpan(
+                                  style: FSTextStyles.noAccount,
+                                  text: FSStrings.noAccount(context),
+                                ),
+                                TextSpan(
+                                  style: FSTextStyles.link,
+                                  text: FSStrings.signUp(context),
+                                  recognizer: TapGestureRecognizer()..onTap = () {
+                                    Navigator.push(context, SignUpBuilder().build(context));
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],

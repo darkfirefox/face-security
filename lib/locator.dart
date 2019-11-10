@@ -6,6 +6,7 @@ import 'package:face_security/network/clients/sign_up_client.dart';
 import 'package:face_security/repositories/history_repository.dart';
 import 'package:face_security/repositories/push_repository.dart';
 import 'package:face_security/repositories/session_repository.dart';
+import 'package:face_security/repositories/sign_up_repository.dart';
 import 'package:face_security/storages/db/database.dart';
 import 'package:get_it/get_it.dart';
 
@@ -15,6 +16,9 @@ Future<void> setupLocators() async {
   final Database dataBase = Database();
   final Dio dio = Dio();
   dio.options.baseUrl = FSConfig.baseUrl;
+  dio.options.connectTimeout = 5000;
+  dio.interceptors.add(
+      LogInterceptor(requestBody: true, request: true, requestHeader: true));
   services.registerSingleton(dataBase);
   services.registerSingleton(dio);
   services.registerSingleton(PushClient(dio));
@@ -26,4 +30,6 @@ Future<void> setupLocators() async {
       client: services<SignInClient>(), dao: dataBase.sessionDao));
   services.registerSingleton(PushRepository(client: services<PushClient>()));
   services.registerSingleton(HistoryRepository(dao: dataBase.notificationDao));
+  services
+      .registerSingleton(SignUpRepository(client: services<SignUpClient>()));
 }

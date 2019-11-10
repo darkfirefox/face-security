@@ -8,6 +8,6 @@ part 'push_client.g.dart';
 abstract class PushClient {
   factory PushClient(Dio dio) = _PushClient;
 
-  @PUT('pushtoken')
+  @PUT('/pushtoken')
   Future<void> pushToken(@Body() Map<String, dynamic> body);
 }

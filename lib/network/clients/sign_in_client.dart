@@ -10,5 +10,5 @@ abstract class SignInClient {
  factory SignInClient(Dio dio) = _SignInClient;
 
  @POST('/login')
- Future<Session> login(@Body() Map<String, dynamic> data);
+ Future<void> login(@Body() Map<String, dynamic> data);
 }

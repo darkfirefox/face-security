@@ -11,5 +11,7 @@
     "profile": "Profile",
     "logout": "Logout",
     "about": "About",
-    "developers": "Developers:"
+    "developers": "Developers:",
+    "noAccount": "No account? ",
+    "next": "Next"
 }

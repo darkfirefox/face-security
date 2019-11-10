@@ -6,7 +6,7 @@ class FSConfig {
 
   static const String appTitle = 'Face Security';
 
-  static const String baseUrl = '';
+  static const String baseUrl = 'http://192.168.43.199:3000/';
 
   static ThemeData appTheme = ThemeData(
     primaryColor: FSColors.primaryColor,
