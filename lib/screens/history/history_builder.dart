@@ -12,7 +12,7 @@ class HistoryBuilder {
       builder: (_) => BlocProvider<HistoryBloc>(
         builder: (_) =>
             HistoryBloc(historyRepository: services<HistoryRepository>())
-              ..dispatch(BlocHistoryLoaded()),
+              ..add(BlocHistoryLoaded()),
         child: HistoryScreen(),
       ),
     );

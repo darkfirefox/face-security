@@ -25,6 +25,6 @@ class MainBloc extends Bloc<MainEvent, MainState> with FCMDelegate {
   @override
   Future<void> showAlert({Notification notification}) async {
     historyRepository.insertNotification(notification: notification);
-    routerBloc.dispatch(ShowNotificationEvent(notification: notification));
+    routerBloc.add(ShowNotificationEvent(notification: notification));
   }
 }

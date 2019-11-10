@@ -36,16 +36,16 @@ class RootBloc extends Bloc<RootEvent, RootState> {
   }
 
   @override
-  void dispose() {
+  Future<void> close() {
     _streamSubscription?.cancel();
-    super.dispose();
+    return super.close();
   }
 
   void _stateBySession(Session session) {
     if (session?.sessionToken?.isNotEmpty ?? false) {
-      dispatch(AppAuthEvent());
+      add(AppAuthEvent());
     } else {
-      dispatch(AppNotAuthEvent());
+      add(AppNotAuthEvent());
     }
   }
 
@@ -73,7 +73,7 @@ class RootBloc extends Bloc<RootEvent, RootState> {
   }
 
   Future<void> _onMessage(Map<String, dynamic> message) async {
-    if (currentState is AuthState) {
+    if (state is AuthState) {
       _delegate?.showAlert(notification: FCMConverter.parseMessage(message));
     }
   }

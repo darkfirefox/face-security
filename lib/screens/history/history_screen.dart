@@ -13,15 +13,13 @@ class HistoryScreen extends StatefulWidget {
 class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
-    final HistoryBloc bloc = BlocProvider.of(context);
     return Scaffold(
       appBar: AppBar(
           title: Text(
         FSStrings.history(context),
         style: FSTextStyles.appBar,
       )),
-      body: BlocBuilder(
-        bloc: bloc,
+      body: BlocBuilder<HistoryBloc, HistoryState>(
         builder: (_, HistoryState state) {
           if (state is ShowHistory) {
             return ListView.builder(
@@ -31,7 +29,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 return HistoryItem(
                   notification: notification,
                   onDismiss: () {
-                    bloc.dispatch(DeleteNotificationEvent(id: notification.id));
+                    BlocProvider.of<HistoryBloc>(context)
+                        .add(DeleteNotificationEvent(id: notification.id));
                   },
                 );
               },

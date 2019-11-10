@@ -19,7 +19,7 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
     if (event is BlocHistoryLoaded) {
       _streamSubscription ??= historyRepository.streamNotifications.listen(
           (List<Notification> notifications) =>
-              dispatch(ShowHistoryEvent(notifications: notifications)));
+              add(ShowHistoryEvent(notifications: notifications)));
     }
     if (event is ShowHistoryEvent) {
       yield ShowHistory(notifications: event.notifications);
@@ -30,9 +30,9 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
   }
 
   @override
-  void dispose() {
+  Future<void> close() {
     _streamSubscription?.cancel();
-    super.dispose();
+    return super.close();
   }
 
   StreamSubscription _streamSubscription;

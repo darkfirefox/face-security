@@ -19,14 +19,14 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     SignInEvent event,
   ) async* {
     if (event is LoginTappedEvent) {
-      loadingBloc.dispatch(BusyEvent());
+      loadingBloc.add(BusyEvent());
       try {
         await sessionRepository.login(
             username: event.username, password: event.password);
       } on DioError catch (error) {
         print(error);
       }
-      loadingBloc.dispatch(IdleEvent());
+      loadingBloc.add(IdleEvent());
     }
   }
 }

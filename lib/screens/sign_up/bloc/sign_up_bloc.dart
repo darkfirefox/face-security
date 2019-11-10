@@ -36,15 +36,15 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       image = event.image;
     }
     if (event is SingUpTapped) {
-      loadingBloc.dispatch(BusyEvent());
+      loadingBloc.add(BusyEvent());
       try {
         await signUpRepository.signUp(
             username: username, password: password, image: image);
-        loadingBloc.dispatch(IdleEvent());
-        routerBloc.dispatch(CloseEvent());
+        loadingBloc.add(IdleEvent());
+        routerBloc.add(CloseEvent());
       } on DioError catch (ex) {
         print(ex);
-        loadingBloc.dispatch(IdleEvent());
+        loadingBloc.add(IdleEvent());
       }
     }
   }

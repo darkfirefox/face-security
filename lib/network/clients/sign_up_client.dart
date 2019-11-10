@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 abstract class SignUpClient {
   factory SignUpClient(Dio dio) = _SignUpClient;
 
-  Future<void> singup(FormData data);
+  Future<void> signup(FormData data);
 }
 
 class _SignUpClient implements SignUpClient {
@@ -14,10 +14,10 @@ class _SignUpClient implements SignUpClient {
   final Dio _dio;
 
   @override
-  singup(data) async {
-    return _dio.request(
+  Future<void> signup(data) async {
+    return _dio.post(
       '/signUp',
-      data: FormData(),
+      data: data,
       onSendProgress: (received, total) {
         if (total != -1) {
           print((received / total * 100).toStringAsFixed(0) + "%");
