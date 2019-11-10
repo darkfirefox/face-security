@@ -12,4 +12,6 @@ class FSColors {
   static const Color alertTitle = Colors.black;
   static const Color alertBody = Colors.black;
   static const Color alertDateTime = Colors.black;
+  static const Color noAccount = Colors.black;
+  static const Color linkColor = Colors.blueAccent;
 }

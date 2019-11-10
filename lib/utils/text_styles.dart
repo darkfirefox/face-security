@@ -29,4 +29,18 @@ class FSTextStyles {
   static const TextStyle menuLogout = TextStyle();
   static const TextStyle aboutTitle = TextStyle();
   static const TextStyle aboutRow = TextStyle();
+  static const TextStyle noAccount = TextStyle(
+    fontSize: 14,
+    color: FSColors.noAccount,
+  );
+  static const TextStyle link = TextStyle(
+    fontSize: 14,
+    color: FSColors.linkColor,
+  );
+  static const TextStyle usernameLabelStyle = TextStyle(
+    color: Colors.black,
+  );
+  static const TextStyle passwordLabelStyle = TextStyle(
+    color: Colors.black,
+  );
 }

@@ -20,4 +20,6 @@ class FSStrings {
   static String logout(BuildContext context) => translate(context, 'logout');
   static String about(BuildContext context) => translate(context, 'about');
   static String developers(BuildContext context) => translate(context, 'developers');
+  static String noAccount(BuildContext context) => translate(context, 'noAccount');
+  static String next(BuildContext context) => translate(context, 'next');
 }
