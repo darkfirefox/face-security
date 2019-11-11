@@ -1,9 +1,8 @@
 import * as faceapi from 'face-api.js';
 
 import { canvas, faceDetectionNet } from '../commons';
-
-const REFERENCE_IMAGES = ['./Maksim.jpg', './Milana.jpg'];
-const labels = ['Maksim', 'Milana'];
+import { getAllUsers } from '../database/db-service';
+import { FaceMatcher } from 'face-api.js';
 
 export async function train() {
   await faceDetectionNet.loadFromDisk('./weights')
@@ -12,39 +11,27 @@ export async function train() {
 
 
   const labeledFaceDescriptors: faceapi.LabeledFaceDescriptors[] = [];
-  let index = 0;
-  for (let img of REFERENCE_IMAGES) {
-    const referenceImage = await canvas.loadImage(img);
-    const fullFaceDescription = await faceapi.detectSingleFace(referenceImage as any).withFaceLandmarks().withFaceDescriptor();
-          
-    if (!fullFaceDescription) {
-      throw new Error(`no faces detected for ${labels[index]}`)
+  const users = await getAllUsers();
+  for (let user of users) {
+    let points;
+    if (user.landmarks) {
+      points = getPointsArray(user.landmarks as unknown as Float32Array);
+      labeledFaceDescriptors.push(new faceapi.LabeledFaceDescriptors(user.username, points));
+
     }
-    
-    const faceDescriptors = [fullFaceDescription.descriptor];
-    labeledFaceDescriptors.push(new faceapi.LabeledFaceDescriptors(labels[index], faceDescriptors));
-    index++;
   }
-  // REFERENCE_IMAGES.forEach(async (img, index) => {
-  //       // labels.map(async label => {
-          
-  //         // detect the face with the highest score in the image and compute it's landmarks and face descriptor
-  //         const fullFaceDescription = await faceapi.detectSingleFace(img as any).withFaceLandmarks().withFaceDescriptor()
-          
-  //         if (!fullFaceDescription) {
-  //           throw new Error(`no faces detected for ${labels[index]}`)
-  //         }
-          
-  //         const faceDescriptors = [fullFaceDescription.descriptor];
-  //         labeledFaceDescriptors.push(new faceapi.LabeledFaceDescriptors(labels[index], faceDescriptors));
-  //         // return new faceapi.LabeledFaceDescriptors(labels[index], faceDescriptors)
-  //       // })
-      
-  // });
- 
 
-  const maxDescriptorDistance = 0.6
-  const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, maxDescriptorDistance)
+  if (labeledFaceDescriptors.length) {
+    const maxDescriptorDistance = 0.6;
+    return new faceapi.FaceMatcher(labeledFaceDescriptors, maxDescriptorDistance);
+  } else {
+    console.log("There are no face descriptors!");
+    return null;
+  }
+}
 
-  return faceMatcher;
+function getPointsArray(points: any): any {
+  const result: any | never[] | number[] = [];
+  points.forEach((point: any) => result.push(point as any));
+  return result;
 }

@@ -40,3 +40,8 @@ export async function findByNameAndPassword(username: string, password: string) 
         password: password
     });
 }
+
+export async function getAllUsers(): Promise<UserModel[]> {
+    console.log('Try to get all users');
+    return db.collection(usersCollection).find({}).toArray();
+}
