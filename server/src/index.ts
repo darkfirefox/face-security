@@ -6,7 +6,7 @@ const interval = require('interval-promise');
 async function start() {
   await connect();
   await launchServer();
-  interval(startRecognition, 0);
+  interval(async () => await startRecognition(), 10000);
 }
 
-start()
+start();

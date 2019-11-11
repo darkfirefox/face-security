@@ -11,8 +11,8 @@ let faceMatcher: any;
 
 export async function processRecognition(faceMatcher: FaceMatcher) {
   console.log("start");
-  //  const queryImage = await canvas.loadImage(`${config.url}/shot.jpg`);
-  const queryImage = await canvas.loadImage('Maksim_test.jpg');
+   const queryImage = await canvas.loadImage(`${config.url}/shot.jpg`);
+  // const queryImage = await canvas.loadImage('Maksim_test.jpg');
   const resultsQuery = await faceapi.detectAllFaces(queryImage as any, faceDetectionOptions)
     .withFaceLandmarks()
     .withFaceDescriptors();
@@ -34,7 +34,7 @@ export async function processRecognition(faceMatcher: FaceMatcher) {
   saveFile('queryImage.jpg', (outQuery as any).toBuffer('image/jpeg'));
 }
 
-export async function detectLandmarks(path: string) {
+export async function detectFaceDescriptors(path: string) {
   const image = await canvas.loadImage(path);
   return await faceapi.computeFaceDescriptor(image as any);
 }

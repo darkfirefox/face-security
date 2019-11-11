@@ -1,7 +1,7 @@
 import { subscribeToNotifications, unsubscribeFromNotifications } from '../notification';
 import { findByNameAndPassword, findByName, registerUser } from '../database/db-service';
 import { IncomingForm, Fields, Files } from 'formidable';
-import { detectLandmarks, needTrain } from '../recognition/recognition';
+import { needTrain, detectFaceDescriptors } from '../recognition/recognition';
 import { FaceLandmarks } from 'face-api.js';
 
 export async function login(req: any, res: any) {
@@ -38,11 +38,11 @@ export async function registration(req: any, res: any) {
             res.sendStatus(500); // User with such name is already exists
         } else {
            
-            const landmarks = await detectLandmarks(files.file.path)
+            const faceDescriptors = await detectFaceDescriptors(files.file.path)
             const user = {
                 username: username as string,
                 password: fields.password as string,
-                landmarks: landmarks as Float32Array
+                faceDescriptors: Array.prototype.slice.call(faceDescriptors) 
             }
             await registerUser(user);
             needTrain();
