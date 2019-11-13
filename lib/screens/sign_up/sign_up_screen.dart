@@ -88,9 +88,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 },
               ),
               EnterPhotoWidget(
-                onTap: () async {
+                onTap: (ImageSource source) async {
                   var image =
-                      await ImagePicker.pickImage(source: ImageSource.camera);
+                      await ImagePicker.pickImage(source: source);
                   BlocProvider.of<SignUpBloc>(context)
                       .add(ChangePhotoEvent(image: image));
                   setState(() {

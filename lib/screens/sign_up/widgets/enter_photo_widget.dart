@@ -1,7 +1,10 @@
 import 'dart:io';
 
 import 'package:face_security/screens/sign_up/widgets/button_widget.dart';
+import 'package:face_security/utils/utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class EnterPhotoWidget extends StatelessWidget {
   EnterPhotoWidget(
@@ -12,7 +15,7 @@ class EnterPhotoWidget extends StatelessWidget {
       : assert(onTap != null),
         assert(onSuccess != null),
         assert(title != null);
-  final Function() onTap;
+  final Function(ImageSource source) onTap;
   final Function() onSuccess;
   final String title;
   final File file;
@@ -23,18 +26,18 @@ class EnterPhotoWidget extends StatelessWidget {
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: _buildChildren(),
+          children: _buildChildren(context: context),
         ),
       ),
     );
   }
 
-  List<Widget> _buildChildren() {
+  List<Widget> _buildChildren({BuildContext context}) {
     final List<Widget> children = <Widget>[];
     if (file == null) {
       children.add(
         GestureDetector(
-          onTap: onTap,
+          onTap: () => _showActionSheet(context: context),
           child: Icon(
             Icons.add_to_photos,
             size: 40,
@@ -44,7 +47,7 @@ class EnterPhotoWidget extends StatelessWidget {
     } else {
       children.add(
         GestureDetector(
-          onTap: onTap,
+          onTap: () => _showActionSheet(context: context),
           child: Image.file(
             file,
             height: 200,
@@ -63,5 +66,35 @@ class EnterPhotoWidget extends StatelessWidget {
       ),
     );
     return children;
+  }
+
+  void _showActionSheet({BuildContext context}) {
+    showCupertinoModalPopup<dynamic>(
+      context: context,
+      builder: (BuildContext context) => CupertinoActionSheet(
+        title: Text(FSStrings.chooseSource(context)),
+        actions: <Widget>[
+          CupertinoActionSheetAction(
+            child: Text(FSStrings.camera(context)),
+            onPressed: () {
+              Navigator.pop(context);
+              onTap(ImageSource.camera);
+            },
+          ),
+          CupertinoActionSheetAction(
+            child: Text(FSStrings.gallery(context)),
+            onPressed: () {
+              Navigator.pop(context);
+              onTap(ImageSource.gallery);
+            },
+          ),
+        ],
+        cancelButton: CupertinoActionSheetAction(
+          child: Text(FSStrings.camera(context)),
+          isDefaultAction: true,
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+    );
   }
 }

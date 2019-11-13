@@ -17,7 +17,7 @@ dependencies:
   moor_flutter: ^2.0.0
   retrofit: ^1.0.1
   dio: ^3.0.3
-  image_picker: ^0.6.1+4
+  image_picker: ^0.6.1+11
   flutter_i18n: ^0.7.0
   get_it: ^3.0.1
   json_annotation: ^3.0.0

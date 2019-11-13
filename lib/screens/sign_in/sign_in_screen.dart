@@ -1,5 +1,6 @@
 import 'package:face_security/commons/widgets/loading_widget.dart';
 import 'package:face_security/screens/sign_in/bloc/bloc.dart';
+import 'package:face_security/screens/sign_in/widgets/button_with_debug.dart';
 import 'package:face_security/screens/sign_up/sign_up_builder.dart';
 import 'package:face_security/utils/image_names.dart';
 import 'package:face_security/utils/utils.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -86,15 +88,16 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 16),
-                          child: RaisedButton(
-                            onPressed: () {
+                          child: ButtonWithDebug(
+                            title: FSStrings.login(context),
+                            onTap: () {
                               if (_formKey.currentState.validate()) {
-                                BlocProvider.of<SignInBloc>(context).add(LoginTappedEvent(
-                                    password: _password.text,
-                                    username: _username.text));
+                                BlocProvider.of<SignInBloc>(context).add(
+                                    LoginTappedEvent(
+                                        password: _password.text,
+                                        username: _username.text));
                               }
                             },
-                            child: Text(FSStrings.login(context)),
                           ),
                         ),
                         Padding(
@@ -109,9 +112,11 @@ class _SignInScreenState extends State<SignInScreen> {
                                 TextSpan(
                                   style: FSTextStyles.link,
                                   text: FSStrings.signUp(context),
-                                  recognizer: TapGestureRecognizer()..onTap = () {
-                                    Navigator.push(context, SignUpBuilder().build(context));
-                                  },
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      Navigator.push(context,
+                                          SignUpBuilder().build(context));
+                                    },
                                 ),
                               ],
                             ),
