@@ -13,5 +13,9 @@
     "about": "About",
     "developers": "Developers:",
     "noAccount": "No account? ",
-    "next": "Next"
+    "next": "Next",
+    "chooseSource": "Choose source",
+    "camera": "Camera",
+    "gallery": "Gallery",
+    "cancel": "Cancel"
 }

@@ -22,4 +22,8 @@ class FSStrings {
   static String developers(BuildContext context) => translate(context, 'developers');
   static String noAccount(BuildContext context) => translate(context, 'noAccount');
   static String next(BuildContext context) => translate(context, 'next');
+  static String chooseSource(BuildContext context) => translate(context, 'chooseSource');
+  static String camera(BuildContext context) => translate(context, 'camera');
+  static String gallery(BuildContext context) => translate(context, 'gallery');
+  static String cancel(BuildContext context) => translate(context, 'cancel');
 }
