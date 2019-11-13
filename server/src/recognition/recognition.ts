@@ -11,8 +11,8 @@ let faceMatcher: any;
 
 export async function processRecognition(faceMatcher: FaceMatcher) {
   console.log("start");
-   const queryImage = await canvas.loadImage(`${config.url}/shot.jpg`);
-  // const queryImage = await canvas.loadImage('Maksim_test.jpg');
+  const queryImage = await canvas.loadImage(`${config.url}/shot.jpg`);
+  // const queryImage = await canvas.loadImage('Maksim_Milana.jpg');
   const resultsQuery = await faceapi.detectAllFaces(queryImage as any, faceDetectionOptions)
     .withFaceLandmarks()
     .withFaceDescriptors();
@@ -47,7 +47,7 @@ export async function startRecognition() {
     isTrainNeeded = false;
   }
   if (faceMatcher) {
-    interval(async () => await processRecognition(faceMatcher), 1000, { iterations: 10 });
+    await processRecognition(faceMatcher);
   }
 }
 
