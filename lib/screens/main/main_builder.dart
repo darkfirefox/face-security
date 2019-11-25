@@ -61,8 +61,8 @@ class MainBuilder {
                   titleStyle: FSTextStyles.alertTitle,
                   descStyle: FSTextStyles.alertBody,
                 ),
-                title: '${state.notification.title ?? ''}',
-                desc: '${state.notification.body ?? ''}',
+                title: FSStrings.translate(context, state.notification.title),
+                desc: FSStrings.translate(context, state.notification.body),
                 buttons: [
                   DialogButton(
                     color: FSColors.primaryColor,

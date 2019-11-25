@@ -24,23 +24,18 @@ class FCMConverter {
 
   static Map<String, String> _parseAndroid(Map<String, dynamic> message) {
     final Map<String, String> result = <String, String>{};
-    if (message.containsKey('notification')) {
-      final dynamic notification = message['notification'];
-      if (notification != null) {
-        final dynamic title = notification['title'];
-        final dynamic body = notification['body'];
+    if (message.containsKey('data')) {
+      final dynamic data = message['data'];
+      if (data != null) {
+        final dynamic clientId = data['dateTime'];
+        final dynamic title = data['title'];
+        final dynamic body = data['body'];
         if (title is String) {
           result[_titleKey] = title;
         }
         if (body is String) {
           result[_bodyKey] = body;
         }
-      }
-    }
-    if (message.containsKey('data')) {
-      final dynamic data = message['data'];
-      if (data != null) {
-        final dynamic clientId = data['dateTime'];
         if (clientId is String) {
           result[_dateTimeKey] = clientId;
         }

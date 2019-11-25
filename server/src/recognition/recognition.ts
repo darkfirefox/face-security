@@ -21,9 +21,14 @@ export async function processRecognition(faceMatcher: FaceMatcher) {
     const bestMatch = faceMatcher.findBestMatch(res.descriptor);
     if (bestMatch.label === "unknown")
       sendNotification({
-        notification: {
-          title: 'Unknown person',
-          body: 'Need your help!!'
+        data: {
+          title: 'notification_title_string',
+          body: 'notification_message_string'
+        },notification : {
+          title_loc_key : 'notification_title_string',
+          body_loc_key: 'notification_message_string',
+          content_available : true,
+          priority : 'high'
         }
       });
     return new faceapi.draw.DrawBox(res.detection.box, { label: bestMatch.toString() });
