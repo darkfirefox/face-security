@@ -17,5 +17,7 @@
     "chooseSource": "Ввыберите источник",
     "camera": "Камера",
     "gallery": "Галлерея",
-    "cancel": "Отмена"
+    "cancel": "Отмена",
+    "notification_title_string": "Неизвестный человек",
+    "notification_message_string" : "Нужна твоя помощь!!!"
 }

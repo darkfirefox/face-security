@@ -17,5 +17,7 @@
     "chooseSource": "Choose source",
     "camera": "Camera",
     "gallery": "Gallery",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "notification_title_string": "Unknown person",
+    "notification_message_string" : "Need your help!!!"
 }

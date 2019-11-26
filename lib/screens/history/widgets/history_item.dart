@@ -36,11 +36,11 @@ class HistoryItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    '${notification.title ?? ''}',
+                    FSStrings.translate(context, notification.title),
                     style: FSTextStyles.historyTitle,
                   ),
                   Text(
-                    '${notification.body ?? ''}',
+                    FSStrings.translate(context, notification.body),
                     style: FSTextStyles.historyBody,
                   ),
                   Text(
