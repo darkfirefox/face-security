@@ -1,5 +1,6 @@
 import { MongoClient, Db } from "mongodb";
 import { UserModel } from './user.model';
+import { cryptPassword, comparePassword } from '../commons/encode';
 
 const mongoOptions = {
     useUnifiedTopology: true
@@ -23,6 +24,7 @@ export async function close() {
 
 export async function registerUser(user: UserModel) {
     console.log(`Try to register new user`);
+    user.password = await cryptPassword(user.password);
     return await db.collection(usersCollection).insertOne(user);
 }
 
@@ -35,10 +37,15 @@ export async function findByName(username: string) {
 
 export async function findByNameAndPassword(username: string, password: string) {
     console.log(`Try to find user with name ${username} and password ${password}`);
-    return await db.collection(usersCollection).findOne({
-        username: username,
-        password: password
+    const user =  await db.collection(usersCollection).findOne({
+        username: username
     });
+    const comparing = comparePassword(password, user.password);
+    if (comparing) {
+        return user;
+    } else {
+        return null;
+    }
 }
 
 export async function getAllUsers(): Promise<UserModel[]> {
